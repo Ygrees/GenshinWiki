@@ -1,24 +1,32 @@
 const express = require("express");
+const {render} = require("ejs");
 const app = express();
 const port = 3000;
+app.set('views', './views');
+app.set('view engine', 'ejs');
 
-app.get('/',((req, res) => {
-    res.sendFile(__dirname+'/index.html')
-}))
+app.get('/', (req, res) => {
+    res.render(__dirname+'/public/index.ejs')
+})
 
-app.get('/char',((req, res) => {
-    res.sendFile(__dirname+'/char.html')
-}))
+app.use(express.static('public'));
 
-/app.get('/',((req, res) => {
-    res.sendFile(__dirname+'/index.html')
-}))
+app.get('/char', (req, res) => {
+    res.render(__dirname+'/public/char.ejs')
+})
 
-app.get('/artifacts',((req, res) => {
-    res.sendFile(__dirname+'/artifacts.html')
-}))
+app.use(express.static('public'));
+
+app.get('/artifacts', (req, res) => {
+    res.render(__dirname+'/public/artifacts.ejs')
+})
+
+app.use(express.static('public'));
+
+app.get('/index', (req, res) => {
+    res.render(__dirname+'/public/index.ejs')
+})
 
 app.listen(port, () =>
     console.log(`App listening at http://localhost:${port}`)
 );
-
