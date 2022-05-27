@@ -28,6 +28,6 @@ app.get('/index', (req, res) => {
 })
 
 
-app.listen(port, () =>
-    console.log(`App listening at http://localhost:${port}`)
+app.listen(process.env.PORT || 3000)
+    console.log(`App listening at http://localhost:${port}`
 );
