@@ -27,6 +27,7 @@ app.get('/index', (req, res) => {
     res.render(__dirname+'/public/index.ejs')
 })
 
+
 app.listen(port, () =>
     console.log(`App listening at http://localhost:${port}`)
 );
